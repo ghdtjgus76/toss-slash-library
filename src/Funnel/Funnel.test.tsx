@@ -31,6 +31,28 @@ describe("퍼널 컴포넌트", () => {
       );
     };
 
-    expect(() => renderWithAssertion()).toThrow();
+    expect(() => renderWithAssertion()).toThrow(
+      "Step4 스텝 컴포넌트를 찾지 못했습니다."
+    );
+  });
+});
+
+describe("스텝 컴포넌트", () => {
+  it("처음 렌더링될 때 onEnter 함수가 호출됩니다.", () => {
+    const onEnterMock = jest.fn();
+
+    render(
+      <Step name={"Step1"} onEnter={onEnterMock}>
+        Step 1
+      </Step>
+    );
+
+    expect(onEnterMock).toHaveBeenCalled();
+  });
+
+  it("children을 렌더링합니다.", () => {
+    render(<Step name="Step1">Step 1</Step>);
+
+    expect(screen.getByText("Step 1")).toBeInTheDocument();
   });
 });
