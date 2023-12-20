@@ -9,9 +9,9 @@ describe("퍼널 컴포넌트", () => {
   it("정상적으로 동작합니다.", () => {
     render(
       <Funnel steps={steps} step={"Step2"}>
-        <Step name="Step1">Step1</Step>
-        <Step name="Step2">Step2</Step>
-        <Step name="Step3">Step3</Step>
+        {steps.map((step) => (
+          <Step name={step}>{step}</Step>
+        ))}
       </Funnel>
     );
 
@@ -24,9 +24,9 @@ describe("퍼널 컴포넌트", () => {
     const renderWithAssertion = (): RenderResult => {
       return render(
         <Funnel steps={steps} step={"Step4"}>
-          <Step name="Step1">Step1</Step>
-          <Step name="Step2">Step2</Step>
-          <Step name="Step3">Step3</Step>
+          {steps.map((step) => (
+            <Step name={step}>{step}</Step>
+          ))}
         </Funnel>
       );
     };
