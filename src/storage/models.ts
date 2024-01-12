@@ -1,8 +1,8 @@
 type Primitive = undefined | null | boolean | number | symbol | string;
 
-export type Serializable =
+export type SerializableParam =
   | Primitive
   | Date
   | { toJSON: () => string }
-  | readonly Serializable[]
-  | Readonly<{ [key: string]: Serializable }>;
+  | readonly SerializableParam[]
+  | Readonly<{ [key: string]: SerializableParam }>;
