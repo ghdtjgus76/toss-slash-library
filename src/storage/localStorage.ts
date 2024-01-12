@@ -7,7 +7,7 @@ interface Storage<T extends SerializableParam> {
   clearAll(): void;
 }
 
-class LocalStorage implements Storage<SerializableParam> {
+export class LocalStorage implements Storage<SerializableParam> {
   private serialize = (value: SerializableParam): string => {
     return JSON.stringify(value);
   };
