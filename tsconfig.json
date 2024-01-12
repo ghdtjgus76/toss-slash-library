@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/Funnel/Funnel.test.tsx"],
+  "include": ["src", "src/Funnel/Funnel.spec.tsx"],
   "jsxImportSource": "@emotion/react"
 }
