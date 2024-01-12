@@ -1,6 +1,6 @@
 import { assert } from "./assert";
 
-describe("assert", () => {
+describe("assert 함수", () => {
   it("condition이 만족되지 않은 경우 에러를 throw해야 합니다.", () => {
     const value: string = "string";
 
