@@ -23,7 +23,7 @@ export const Funnel = <Steps extends NonEmptyArray<string>>({
   const validChildren = Children.toArray(children)
     .filter(isValidElement)
     .filter((i) =>
-      steps.includes((i.props as Partial<StepProps<Steps>>).name ?? "")
+      steps.includes((i.props as StepProps<Steps>).name ?? "")
     ) as Array<ReactElement<StepProps<Steps>>>;
 
   const targetStep = validChildren.find((child) => child.props.name === step);
