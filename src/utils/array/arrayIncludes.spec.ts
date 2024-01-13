@@ -17,7 +17,7 @@ export default describe("arrayIncludes 함수", () => {
 
   it("fromIndex를 입력하면 해당 인덱스 이후부터 주어진 배열에 있는 요소인지 확인 후 결과를 반환합니다.", () => {
     const arr: Array<"a" | "b" | "c"> = ["a", "b", "c"];
-    const element = "a";
+    let element = "a";
 
     expect(arrayIncludes(arr, element, 0)).toBe(true);
     expect(arrayIncludes(arr, element, 1)).toBe(false);
