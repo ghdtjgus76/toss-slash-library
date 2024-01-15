@@ -1,14 +1,14 @@
 import { LocalStorage, localStorage } from "./localStorage";
 import { SerializableParam } from "./models";
 
-const testData: SerializableParam = {
-  key: "testData1",
-};
-
 export default describe("로컬 스토리지", () => {
   let storage: LocalStorage;
+  let testData: SerializableParam;
 
   beforeEach(() => {
+    testData = {
+      key: "testData1",
+    };
     storage = localStorage;
     storage.set("testData1", testData);
   });
