@@ -3,9 +3,13 @@ import "@testing-library/jest-dom";
 import { Funnel, Step } from "./Funnel";
 import { NonEmptyArray } from "./models";
 
-const steps: NonEmptyArray<string> = ["Step1", "Step2", "Step3"];
-
 describe("퍼널 컴포넌트", () => {
+  let steps: NonEmptyArray<string>;
+
+  beforeEach(() => {
+    steps = ["Step1", "Step2", "Step3"];
+  });
+
   it("정상적으로 동작합니다.", () => {
     render(
       <Funnel steps={steps} step={"Step2"}>
