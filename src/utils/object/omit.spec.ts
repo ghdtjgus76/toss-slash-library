@@ -1,12 +1,16 @@
 import { omit } from "./omit";
 
-const country = {
-  KR: "KR",
-  US: "US",
-  JP: "JP",
-} as const;
-
 export default describe("omit 함수", () => {
+  let country: Record<"KR" | "US" | "JP", string>;
+
+  beforeEach(() => {
+    country = {
+      KR: "KR",
+      US: "US",
+      JP: "JP",
+    } as const;
+  });
+
   it("빈 배열을 전달할 경우 주어진 객체 그대로를 반환합니다.", () => {
     expect(omit(country, [])).toStrictEqual(country);
   });
