@@ -1,39 +1,63 @@
 import { SerializableParam } from "./models";
 
-interface Storage<T extends SerializableParam> {
-  get(key: string): T | null;
-  set(key: string, value: T): void;
+type StorageType = {
+  get(key: string): string | null;
+  set(key: string, value: string): void;
   remove(key: string): void;
   clearAll(): void;
-}
+};
 
-export class LocalStorage implements Storage<SerializableParam> {
-  private serialize = (value: SerializableParam): string => {
-    return JSON.stringify(value);
-  };
-
-  private deserialize = (value: string | null): SerializableParam => {
-    if (value) {
-      return JSON.parse(value);
-    } else {
+export class LocalStorage implements StorageType {
+  private serialize = <T extends SerializableParam>(value: T): string | null => {
+    try {
+      return JSON.stringify(value);
+    } catch (error) {
+      console.error(error);
       return null;
     }
   };
 
-  get(key: string) {
-    return this.deserialize(window.localStorage.getItem(key));
+  private deserialize = (value: string): string | null => {
+    try {
+      return JSON.parse(value);
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
+
+  get(key: string): string | null {
+    try {
+      const storedValue = window.localStorage.getItem(key);
+      return storedValue ? this.deserialize(storedValue) : null;
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
   }
 
-  set(key: string, value: SerializableParam) {
-    window.localStorage.setItem(key, this.serialize(value));
+  set(key: string, value: string): void {
+    try {
+      window.localStorage.setItem(key, this.serialize(value) as string);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  remove(key: string) {
-    window.localStorage.removeItem(key);
+  remove(key: string): void {
+    try {
+      window.localStorage.removeItem(key);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  clearAll() {
-    window.localStorage.clear();
+  clearAll(): void {
+    try {
+      window.localStorage.clear();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
