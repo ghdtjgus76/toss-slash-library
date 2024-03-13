@@ -36,5 +36,3 @@ export const ScreenReaderOnly = forwardRef(
     );
   }
 );
-
-export default ScreenReaderOnly;
