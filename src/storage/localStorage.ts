@@ -36,7 +36,7 @@ export class LocalStorage implements StorageType {
     }
   }
 
-  set(key: string, value: string): void {
+  set(key: string, value: SerializableParam): void {
     try {
       window.localStorage.setItem(key, this.serialize(value) as string);
     } catch (error) {
@@ -61,4 +61,4 @@ export class LocalStorage implements StorageType {
   }
 }
 
-export const localStorage = new LocalStorage();
+export const lStorage = new LocalStorage();

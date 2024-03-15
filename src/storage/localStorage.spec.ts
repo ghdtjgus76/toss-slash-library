@@ -1,4 +1,4 @@
-import { LocalStorage, localStorage } from "./localStorage";
+import { LocalStorage, lStorage } from "./localStorage";
 import { SerializableParam } from "./models";
 
 export default describe("로컬 스토리지", () => {
@@ -9,7 +9,7 @@ export default describe("로컬 스토리지", () => {
     testData = {
       key: "testData1",
     };
-    storage = localStorage;
+    storage = lStorage;
     storage.set("testData1", testData);
   });
 
